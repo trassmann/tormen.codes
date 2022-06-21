@@ -9,14 +9,9 @@ import {
 } from "@remix-run/react";
 
 import tailwindStyles from "./styles/tailwind.css";
-import globalStyles from "./styles/global.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwindStyles },
-  {
-    rel: "stylesheet",
-    href: globalStyles,
-  },
 ];
 
 export const meta: MetaFunction = () => ({
