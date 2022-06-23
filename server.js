@@ -30,8 +30,12 @@ async function runServer() {
     cert: readFileSync("/etc/letsencrypt/live/tormen.xyz/fullchain.pem"),
   };
 
-  createServer(httpsOptions, app).listen(443, () => {
+  const server = createServer(httpsOptions, app).listen(443, () => {
     console.log(`Server listening on port ${443}`);
+  });
+
+  ["SIGTERM", "SIGINT"].forEach((signal) => {
+    process.once(signal, () => server?.close(console.error));
   });
 }
 
