@@ -41,7 +41,7 @@ async function runServer() {
     return response.redirect("https://" + request.headers.host + request.url);
   });
 
-  app
+  httpApp
     .listen(80, () => {
       console.log(`HTTP app listening on port ${80}`);
     })
