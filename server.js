@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { readFileSync } = require("fs");
 const { createServer } = require("https");
+const { createServer: createHttpServer } = require("http");
 const { createRequestHandler } = require("@remix-run/express");
 
 async function runServer() {
@@ -34,9 +35,20 @@ async function runServer() {
     console.log(`Server listening on port ${443}`);
   });
 
-  ["SIGTERM", "SIGINT"].forEach((signal) => {
-    process.once(signal, () => server?.close(console.error));
+  let httpApp = express();
+
+  httpApp.use(function (request, response) {
+    return response.redirect("https://" + request.headers.host + request.url);
   });
+
+  app
+    .listen(80, () => {
+      console.log(`HTTP app listening on port ${80}`);
+    })
+
+    [("SIGTERM", "SIGINT")].forEach((signal) => {
+      process.once(signal, () => server?.close(console.error));
+    });
 }
 
 runServer();
