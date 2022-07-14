@@ -3,7 +3,6 @@ const express = require("express");
 const morgan = require("morgan");
 const { readFileSync } = require("fs");
 const { createServer } = require("https");
-const { createServer: createHttpServer } = require("http");
 const { createRequestHandler } = require("@remix-run/express");
 
 async function runServer() {

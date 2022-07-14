@@ -6,7 +6,7 @@ export default function Navigation() {
       <div className="w-full flex flex-row items-center max-w-5xl xl:px-0 px-8">
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-lg underline mr-6" : "text-lg hover:underline mr-6"
+            isActive ? "underline mr-6" : "hover:underline mr-6"
           }
           to="/projects"
         >
@@ -14,7 +14,7 @@ export default function Navigation() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-lg underline mr-6" : "text-lg hover:underline mr-6"
+            isActive ? "underline mr-6" : "hover:underline mr-6"
           }
           to="/about"
         >
